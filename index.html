@@ -1,678 +1,249 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Pembelajaran Interaktif - Fungsi Komposisi & Aplikasinya</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b1329; color: #f8fafc; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .card-custom { background: #131c38; border: 1px solid rgba(255, 255, 255, 0.08); }
-        .card-custom:hover { border-color: rgba(59, 130, 246, 0.4); }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0b1329; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101936">
+<title>Mission: Master of Derivatives | Media Pembelajaran Matematika</title>
+<meta name="description" content="Media pembelajaran interaktif Turunan Fungsi Aljabar dan Penerapannya untuk siswa SMA. Guru Mata Pelajaran: Faisol.">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script>
+window.MathJax = {tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--bg:#0a1022;--panel:#111b35;--panel2:#162342;--line:rgba(169,190,255,.16);--text:#f3f6ff;--muted:#aab6d4;--cyan:#5ee7f7;--purple:#9b8cff;--green:#6ce6ad;--yellow:#ffd166;--red:#ff7d9a;--radius:20px;--shadow:0 18px 50px rgba(0,0,0,.25)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1c2853 0,transparent 42%),radial-gradient(ellipse at 100% 20%,#17234c 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}a{color:var(--cyan)}.app{max-width:1440px;margin:auto;padding:18px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 4px 20px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:25px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#081226;font-weight:900;box-shadow:0 8px 25px #5ee7f733}.brand h1{font-size:16px;margin:0;letter-spacing:.08em}.brand small{color:var(--muted)}.top-actions{display:flex;gap:8px;align-items:center}.pill{border:1px solid var(--line);background:#ffffff08;padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px}.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:750;color:#071226;background:linear-gradient(110deg,var(--cyan),#a6f1ef);box-shadow:0 8px 24px #5ee7f71c;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.05)}.btn.secondary{background:#ffffff0a;color:var(--text);border:1px solid var(--line);box-shadow:none}.btn.purple{background:linear-gradient(110deg,#9b8cff,#d2b6ff)}.btn.green{background:linear-gradient(110deg,#6ce6ad,#b6f8d9)}.btn.danger{background:#ff7d9a;color:#260914}.btn.small{padding:7px 11px;font-size:13px}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,60px);background:linear-gradient(125deg,#18264bdf,#111b35ed 65%,#31245a99);box-shadow:var(--shadow);display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);text-transform:uppercase;font-size:12px;font-weight:850;letter-spacing:.15em}.hero h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-.04em;margin:16px 0}.hero h2 span{background:linear-gradient(90deg,var(--cyan),#c2a8ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:660px;color:#c3cce5;font-size:17px}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero-art{min-height:270px;position:relative;display:grid;place-items:center}.orbit{width:min(100%,340px);aspect-ratio:1;border-radius:50%;border:1px solid #7d8dff4a;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#5ee7f71a,transparent 60%);animation:float 6s ease-in-out infinite}.orbit:before,.orbit:after{content:"";position:absolute;inset:12%;border:1px dashed #9b8cff66;border-radius:50%;transform:rotate(-25deg) scaleX(1.25)}.orbit:after{transform:rotate(55deg) scaleX(1.25)}.math-symbol{font-size:clamp(65px,10vw,100px);font-weight:900;color:var(--cyan);text-shadow:0 0 40px #5ee7f777;z-index:1}.orbit-label{position:absolute;z-index:2;background:#111b35;border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px}.label-a{top:9%;right:0}.label-b{bottom:13%;left:0}.label-c{bottom:4%;right:12%}@keyframes float{50%{transform:translateY(-8px)}}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 30px}.stat,.card,.mission,.section-card{background:linear-gradient(145deg,#15213fdd,#101a32ee);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.stat{padding:16px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:25px;margin-top:4px}.progress-track{height:7px;background:#ffffff12;border-radius:99px;overflow:hidden;margin-top:9px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:width .4s}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 14px}.section-heading h2{font-size:24px;margin:0}.section-heading p{margin:4px 0 0;color:var(--muted);font-size:14px}.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mission{padding:20px;position:relative;overflow:hidden;transition:.2s}.mission:hover{transform:translateY(-3px);border-color:#5ee7f755}.mission .icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#5ee7f71a;font-size:24px;margin-bottom:14px}.mission h3{margin:0 0 6px;font-size:18px}.mission p{color:var(--muted);font-size:14px;min-height:44px;margin:0 0 16px}.mission-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}.tag{font-size:11px;font-weight:800;letter-spacing:.05em;padding:5px 8px;border-radius:99px;background:#ffffff0b;color:var(--muted);border:1px solid var(--line)}.tag.done{color:var(--green);border-color:#6ce6ad55}.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;margin-top:26px}.sidebar{align-self:start;position:sticky;top:15px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#0e1830dd}.nav-btn{width:100%;display:flex;gap:10px;align-items:center;text-align:left;padding:11px 12px;margin:3px 0;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--muted)}.nav-btn:hover,.nav-btn.active{background:#5ee7f714;border-color:#5ee7f72b;color:var(--text)}.nav-btn span:first-child{width:24px;text-align:center}.content{min-width:0}.view{display:none;animation:fade .25s ease}.view.active{display:block}@keyframes fade{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}.section-card{padding:clamp(18px,3vw,28px);margin-bottom:16px}.section-card h2{margin:0 0 8px}.muted{color:var(--muted)}.lead{font-size:16px;color:#c9d2e9}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-card{border:1px solid var(--line);background:#ffffff05;border-radius:15px;padding:16px}.mini-card h3{margin:0 0 8px}.formula{border:1px solid #5ee7f72b;background:#5ee7f70b;border-radius:14px;padding:14px 18px;margin:12px 0;overflow:auto;font-size:17px}.callout{border-left:3px solid var(--cyan);padding:10px 14px;background:#5ee7f70b;color:#d7e4f9;border-radius:0 10px 10px 0;margin:12px 0}.controls{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:12px 0}.field{display:flex;flex-direction:column;gap:6px;min-width:120px;flex:1}.field label{font-size:13px;color:var(--muted)}input,select,textarea{width:100%;background:#0b142a;color:var(--text);border:1px solid #a9beff35;border-radius:10px;padding:10px 12px;min-height:42px}input[type=range]{padding:0;accent-color:var(--cyan)}input[type=radio],input[type=checkbox]{width:auto;min-height:auto}.graph{height:360px;width:100%;border-radius:14px;overflow:hidden;background:#f9fbff}.feedback{padding:12px 14px;border-radius:12px;margin-top:12px;display:none}.feedback.show{display:block}.feedback.good{background:#6ce6ad18;border:1px solid #6ce6ad66;color:#aaf6d1}.feedback.bad{background:#ff7d9a18;border:1px solid #ff7d9a66;color:#ffc2d0}.answer-options{display:grid;gap:9px;margin:14px 0}.option{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:#ffffff04;cursor:pointer}.option:hover{border-color:#5ee7f755}.option input{margin-top:5px}.question-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.question-text{font-size:20px;font-weight:750}.quiz-nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:16px}.quiz-dots{display:flex;gap:5px;flex-wrap:wrap}.quiz-dot{width:31px;height:31px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--muted)}.quiz-dot.current{border-color:var(--cyan);color:var(--cyan)}.quiz-dot.answered{background:#6ce6ad20;color:var(--green)}.badge{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;margin:5px;background:#ffffff05}.badge.earned{border-color:#ffd16666;color:var(--yellow);background:#ffd16610}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:460px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--cyan);font-size:13px}td{font-size:14px}.footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 10px}.toast{position:fixed;right:18px;bottom:18px;max-width:340px;padding:14px 18px;background:#172746;border:1px solid #5ee7f755;border-radius:14px;box-shadow:var(--shadow);z-index:99;display:none}.toast.show{display:block;animation:fade .2s}.mobile-menu{display:none}.hint{font-size:13px;color:var(--muted)}.result-number{font-size:32px;font-weight:850;color:var(--cyan)}.checklist{list-style:none;padding:0}.checklist li{padding:8px 0;border-bottom:1px solid var(--line)}.checklist li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+@media(max-width:1000px){.hero{grid-template-columns:1fr .65fr}.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow-x:auto;gap:4px;padding:8px}.nav-btn{white-space:nowrap;width:auto;flex:0 0 auto}.nav-btn span:last-child{display:none}.mission-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.app{padding:10px}.topbar{align-items:flex-start}.top-actions .pill{display:none}.hero{grid-template-columns:1fr;padding:25px}.hero-art{min-height:190px}.orbit{width:205px}.math-symbol{font-size:70px}.stats{grid-template-columns:repeat(2,1fr)}.mission-grid,.two-col,.three-col{grid-template-columns:1fr}.section-heading{align-items:flex-start;flex-direction:column}.graph{height:300px}.brand h1{font-size:13px}.brand-mark{width:42px;height:42px}.hide-mobile{display:none}.sidebar{margin:0 -2px}.nav-btn{padding:10px}.nav-btn span:first-child{width:auto}.question-text{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">ƒ′</div><div><h1>MISSION: MASTER OF DERIVATIVES</h1><small>Laboratorium Matematika Interaktif</small></div></div>
+  <div class="top-actions"><span class="pill">MATEMATIKA SMA</span><span class="pill">👨‍🏫 Guru: Faisol</span><button class="btn secondary small" id="resetProgress">Reset progres</button></div>
+</header>
 
-    <!-- HEADER / NAVBAR -->
-    <header class="w-full bg-[#0f172a] border-b border-slate-800 sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            <!-- Logo & Title -->
-            <div class="flex items-center gap-3">
-                <div class="bg-blue-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/30 text-white">
-                    <i class="fa-solid fa-square-root-variable text-xl"></i>
-                </div>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-semibold bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full border border-blue-500/30">KELAS X / XI SMA/SMK</span>
-                    </div>
-                    <h1 class="text-lg font-bold text-white tracking-wide">Fungsi Komposisi & Aplikasinya</h1>
-                </div>
-            </div>
+<section class="hero" id="homeHero">
+ <div>
+  <div class="eyebrow">✦ Belajar · Eksplorasi · Taklukkan</div>
+  <h2>Ubah rasa ingin tahu menjadi <span>kekuatan matematika.</span></h2>
+  <p>Jelajahi bagaimana turunan membaca perubahan, membuka rahasia grafik, dan menemukan solusi paling optimal. Bukan cuma menghafal rumus—saatnya bereksperimen!</p>
+  <div class="hero-buttons"><button class="btn" id="startBtn">Mulai Petualangan ↗</button><button class="btn secondary" id="guideBtn">Petunjuk Belajar</button></div>
+  <p class="hint">Media pembelajaran interaktif · Turunan Fungsi Aljabar dan Penerapannya</p>
+ </div>
+ <div class="hero-art" aria-label="Ilustrasi konsep turunan"><div class="orbit"><div class="math-symbol">ƒ′(x)</div><span class="orbit-label label-a">Gradien ↗</span><span class="orbit-label label-b">Perubahan ∆</span><span class="orbit-label label-c">Optimasi ✦</span></div></div>
+</section>
 
-            <!-- Alokasi Waktu Badge -->
-            <div class="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-2 shadow-sm">
-                <i class="fa-regular fa-clock text-amber-400"></i>
-                <span>Alokasi Waktu Pembelajaran: <b>90 Menit Interaktif</b></span>
-            </div>
-        </div>
+<section class="stats" aria-label="Progres belajar">
+ <div class="stat"><small>XP terkumpul</small><strong id="xpValue">0 XP</strong><div class="progress-track"><div class="progress-fill" id="xpBar"></div></div></div>
+ <div class="stat"><small>Misi selesai</small><strong id="missionValue">0 / 6</strong><div class="progress-track"><div class="progress-fill" id="missionBar"></div></div></div>
+ <div class="stat"><small>Skor tantangan</small><strong id="scoreValue">—</strong><span class="hint">Hasil percobaan terbaik</span></div>
+ <div class="stat"><small>Lencana</small><strong id="badgeValue">0 🏅</strong><span class="hint">Pencapaian belajar</span></div>
+</section>
 
-        <!-- NAVIGATION TABS -->
-        <div class="max-w-7xl mx-auto px-4 overflow-x-auto">
-            <nav class="flex gap-2 py-2 border-t border-slate-800/60 min-w-max">
-                <button onclick="switchTab('beranda')" id="btn-beranda" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 bg-blue-600 text-white shadow-md shadow-blue-600/20">
-                    <i class="fa-solid fa-house"></i> Beranda & Alur
-                </button>
-                <button onclick="switchTab('materi')" id="btn-materi" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 text-slate-400 hover:bg-slate-800/80 hover:text-white">
-                    <i class="fa-solid fa-book-open"></i> Eksplorasi Materi
-                </button>
-                <button onclick="switchTab('aplikasi')" id="btn-aplikasi" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 text-slate-400 hover:bg-slate-800/80 hover:text-white">
-                    <i class="fa-solid fa-lightbulb"></i> Contoh & Aplikasi
-                </button>
-                <button onclick="switchTab('simulator')" id="btn-simulator" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 text-slate-400 hover:bg-slate-800/80 hover:text-white">
-                    <i class="fa-solid fa-microchip"></i> Lab Simulator
-                </button>
-                <button onclick="switchTab('kuis')" id="btn-kuis" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 text-slate-400 hover:bg-slate-800/80 hover:text-white">
-                    <i class="fa-solid fa-square-check"></i> Kuis Evaluasi (5 Soal)
-                </button>
-                <button onclick="switchTab('refleksi')" id="btn-refleksi" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 text-slate-400 hover:bg-slate-800/80 hover:text-white">
-                    <i class="fa-solid fa-heart"></i> Lembar Refleksi
-                </button>
-            </nav>
-        </div>
-    </header>
+<section id="missionsHome">
+ <div class="section-heading"><div><h2>🧭 Peta Petualangan</h2><p>Pilih misi, lakukan eksplorasi, lalu kumpulkan XP-mu.</p></div><span class="pill">6 Misi Pembelajaran</span></div>
+ <div class="mission-grid">
+  <article class="mission"><div class="icon">🔎</div><h3>01 · Detektif Perubahan</h3><p>Temukan arti turunan lewat laju perubahan dan garis singgung.</p><div class="mission-footer"><span class="tag" id="tag-m1">BELUM DIMULAI</span><button class="btn small" data-go="concept">Mulai</button></div></article>
+  <article class="mission"><div class="icon">🧪</div><h3>02 · Laboratorium Turunan</h3><p>Uji aturan turunan dan hitung turunan polinomial langkah demi langkah.</p><div class="mission-footer"><span class="tag" id="tag-m2">BELUM DIMULAI</span><button class="btn small" data-go="lab">Mulai</button></div></article>
+  <article class="mission"><div class="icon">📈</div><h3>03 · Penjelajah Grafik</h3><p>Geser titik pada kurva dan amati bagaimana gradien berubah.</p><div class="mission-footer"><span class="tag" id="tag-m3">BELUM DIMULAI</span><button class="btn small" data-go="graph">Mulai</button></div></article>
+  <article class="mission"><div class="icon">🎯</div><h3>04 · Pemburu Titik Optimal</h3><p>Gunakan turunan pertama untuk menganalisis maksimum dan minimum.</p><div class="mission-footer"><span class="tag" id="tag-m4">BELUM DIMULAI</span><button class="btn small" data-go="optimize">Mulai</button></div></article>
+  <article class="mission"><div class="icon">🌍</div><h3>05 · Matematika Dunia Nyata</h3><p>Selesaikan persoalan usaha, gerak benda, dan desain taman.</p><div class="mission-footer"><span class="tag" id="tag-m5">BELUM DIMULAI</span><button class="btn small" data-go="cases">Mulai</button></div></article>
+  <article class="mission"><div class="icon">👾</div><h3>06 · Boss Challenge</h3><p>Uji pemahamanmu melalui 15 soal dengan tingkat kesulitan bertahap.</p><div class="mission-footer"><span class="tag" id="tag-m6">BELUM DIMULAI</span><button class="btn small purple" data-go="quiz">Tantang diri</button></div></article>
+ </div>
+</section>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+<div class="layout">
+ <nav class="sidebar" aria-label="Navigasi materi">
+  <button class="nav-btn active" data-view="overview"><span>🏠</span><span>Beranda</span></button>
+  <button class="nav-btn" data-view="concept"><span>🔎</span><span>Konsep Turunan</span></button>
+  <button class="nav-btn" data-view="lab"><span>🧪</span><span>Lab Turunan</span></button>
+  <button class="nav-btn" data-view="graph"><span>📈</span><span>Grafik Interaktif</span></button>
+  <button class="nav-btn" data-view="optimize"><span>🎯</span><span>Optimasi</span></button>
+  <button class="nav-btn" data-view="cases"><span>🌍</span><span>Studi Kasus</span></button>
+  <button class="nav-btn" data-view="quiz"><span>👾</span><span>Boss Challenge</span></button>
+  <button class="nav-btn" data-view="summary"><span>📚</span><span>Rangkuman</span></button>
+  <button class="nav-btn" data-view="teacher"><span>👨‍🏫</span><span>Info Guru</span></button>
+ </nav>
 
-        <!-- TAB 1: BERANDA & ALUR -->
-        <section id="beranda" class="tab-content active space-y-6">
-            <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
-                <div>
-                    <h2 class="text-2xl font-bold text-white mb-2">Selamat Datang di Modul Interaktif Fungsi Komposisi</h2>
-                    <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                        Media pembelajaran interaktif ini dirancang untuk membantu siswa memahami konsep fungsi komposisi secara mendalam melalui pendekatan visual, fungsi aljabar murni, hingga studi kasus kontekstual di masyarakat (ekonomi, produksi, dan kehidupan sehari-hari).
-                    </p>
-                </div>
+ <main class="content">
+  <section class="view active" id="view-overview">
+   <div class="section-card"><div class="eyebrow">SELAMAT DATANG, PENJELAJAH</div><h2>Mulai dari rasa penasaran.</h2><p class="lead">Turunan membantu kita memahami seberapa cepat sesuatu berubah. Dari kecepatan kendaraan sampai keuntungan usaha, konsep ini punya banyak cerita.</p><div class="two-col"><div class="mini-card"><h3>🎯 Tujuan belajar</h3><ul class="checklist"><li>Menentukan turunan fungsi aljabar.</li><li>Menafsirkan gradien dan tanda turunan.</li><li>Menganalisis titik stasioner.</li><li>Menyelesaikan masalah optimasi.</li></ul></div><div class="mini-card"><h3>🕹️ Cara bermain</h3><ol><li>Pilih salah satu misi.</li><li>Baca konsep dan coba simulasinya.</li><li>Jawab tantangan untuk mendapat XP.</li><li>Selesaikan Boss Challenge dan refleksi.</li></ol><p class="hint">Progres tersimpan di browser perangkat ini.</p></div></div></div>
+   <div class="section-card"><h2>⚡ Pemanasan: apa arti kemiringan?</h2><p class="muted">Pada grafik, turunan di suatu titik menunjukkan gradien garis singgung. Coba lihat contoh fungsi berikut.</p><div class="formula">\(f(x)=x^2 \quad \Rightarrow \quad f'(x)=2x\)</div><div class="two-col"><div class="mini-card"><p><b>Jika x = 1</b>, gradiennya \(f'(1)=2\).</p><p><b>Jika x = 3</b>, gradiennya \(f'(3)=6\).</p><p class="muted">Semakin jauh ke kanan pada parabola ini, garis singgung semakin curam.</p></div><div id="overviewGraph" class="graph" aria-label="Grafik fungsi x kuadrat"></div></div><button class="btn" data-go="graph">Coba simulasi grafik ↗</button></div>
+  </section>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
-                        <div class="text-blue-400 font-bold text-lg mb-1">01. Konsep & Aljabar</div>
-                        <p class="text-slate-400 text-xs leading-relaxed">Memahami definisi mesin fungsi berlapis (f ∘ g)(x) dan aturan operasi aljabar fungsi.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
-                        <div class="text-indigo-400 font-bold text-lg mb-1">02. Aplikasi Kontekstual</div>
-                        <p class="text-slate-400 text-xs leading-relaxed">Mempelajari penerapan nyata fungsi komposisi dalam perhitungan harga barang dan produksi pabrik.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800">
-                        <div class="text-emerald-400 font-bold text-lg mb-1">03. Lab & Evaluasi</div>
-                        <p class="text-slate-400 text-xs leading-relaxed">Uji coba simulasi perhitungan otomatis serta kuis mandiri berformat interaktif.</p>
-                    </div>
-                </div>
+  <section class="view" id="view-concept">
+   <div class="section-card"><div class="eyebrow">MISI 01 · DETEKTIF PERUBAHAN</div><h2>Seberapa cepat sesuatu berubah?</h2><p class="lead">Bayangkan sebuah mobil balap. Kecepatan rata-rata selama beberapa detik dapat dihitung dari perubahan jarak dibagi perubahan waktu. Namun, bagaimana mengetahui kecepatan tepat pada satu detik tertentu?</p>
+    <div class="two-col"><div class="mini-card"><h3>Kecepatan rata-rata</h3><p>Perubahan posisi selama suatu selang waktu dibagi panjang selang waktu tersebut.</p><div class="formula">\(\displaystyle \frac{f(x+h)-f(x)}{h}\)</div></div><div class="mini-card"><h3>Turunan / laju sesaat</h3><p>Nilai yang diperoleh ketika selang perubahan dibuat semakin kecil menuju nol.</p><div class="formula">\(\displaystyle f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\)</div></div></div>
+    <div class="callout"><b>Inti konsep:</b> turunan \(f'(a)\) adalah gradien garis singgung grafik \(y=f(x)\) pada \(x=a\), jika turunan tersebut ada.</div>
+    <h3>Eksperimen garis secan menjadi garis singgung</h3><p class="muted">Untuk \(f(x)=x^2\), ubah nilai \(h\). Garis secan melalui titik \(x=a\) dan \(x=a+h\) akan mendekati garis singgung ketika \(h\) mendekati nol.</p>
+    <div class="controls"><div class="field"><label for="secA">Titik a: <b id="secAVal">1</b></label><input id="secA" type="range" min="-2" max="2" step=".1" value="1"></div><div class="field"><label for="secH">Selang h: <b id="secHVal">1.00</b></label><input id="secH" type="range" min=".05" max="2" step=".05" value="1"></div></div><div id="secantGraph" class="graph"></div><div id="secantInfo" class="callout"></div>
+    <h3>Cek pemahaman cepat</h3><p>Turunan di suatu titik paling tepat menggambarkan…</p><div class="answer-options" id="conceptOptions"><label class="option"><input type="radio" name="conceptQ" value="a"> Jarak total yang ditempuh benda</label><label class="option"><input type="radio" name="conceptQ" value="b"> Gradien garis singgung / laju perubahan sesaat</label><label class="option"><input type="radio" name="conceptQ" value="c"> Luas daerah di bawah kurva</label></div><button class="btn" id="checkConcept">Periksa jawaban</button><div class="feedback" id="conceptFeedback"></div>
+   </div>
+  </section>
 
-                <div class="pt-4 border-t border-slate-800 flex justify-end">
-                    <button onclick="switchTab('materi')" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 rounded-xl transition text-sm flex items-center gap-2 shadow-lg shadow-blue-600/20">
-                        Mulai Eksplorasi Materi <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
+  <section class="view" id="view-lab">
+   <div class="section-card"><div class="eyebrow">MISI 02 · LABORATORIUM TURUNAN</div><h2>Racik turunanmu sendiri</h2><p class="lead">Masukkan koefisien polinomial. Laboratorium ini mendukung fungsi polinomial dengan pangkat bilangan bulat tak negatif hingga pangkat 8.</p>
+    <div class="formula">\((c x^n)'=cnx^{n-1}\) &nbsp; · &nbsp; \((u\pm v)'=u'\pm v'\) &nbsp; · &nbsp; \(c'=0\)</div>
+    <div class="controls"><div class="field"><label for="polyInput">Fungsi polinomial f(x)</label><select id="polyInput"><option value="example">x³ − 3x² + 2x + 1</option><option value="quadratic">−x² + 6x + 7</option><option value="profit">−2x² + 80x − 300</option><option value="custom">Masukkan koefisien sendiri</option></select></div><button class="btn" id="loadPoly">Muat fungsi</button></div>
+    <div id="customPoly" style="display:none"><p class="muted">Masukkan koefisien dari pangkat tertinggi hingga konstanta, pisahkan dengan koma. Contoh untuk \(2x^3-x+4\): <code>2,0,-1,4</code>.</p><div class="controls"><div class="field"><label for="coeffInput">Koefisien</label><input id="coeffInput" value="2,0,-1,4" inputmode="decimal"></div><button class="btn secondary" id="applyCoeff">Terapkan</button></div></div>
+    <div class="two-col"><div class="mini-card"><small class="muted">FUNGSI AWAL</small><div class="formula" id="polyFormula">\(f(x)=x^3-3x^2+2x+1\)</div></div><div class="mini-card"><small class="muted">HASIL TURUNAN</small><div class="formula" id="derivativeFormula">\(f'(x)=3x^2-6x+2\)</div></div></div>
+    <h3>Langkah penurunan</h3><div id="polySteps"></div>
+    <div class="controls"><div class="field"><label for="labX">Amati nilai x: <b id="labXVal">1</b></label><input type="range" id="labX" min="-5" max="5" step=".25" value="1"></div></div><div class="three-col"><div class="mini-card"><small class="muted">f(x)</small><div class="result-number" id="labFx">1</div></div><div class="mini-card"><small class="muted">f′(x)</small><div class="result-number" id="labDfx">-1</div></div><div class="mini-card"><small class="muted">Makna</small><div id="labMeaning">Gradien negatif</div></div></div>
+    <div id="labGraph" class="graph"></div><div class="callout">Grafik fungsi dan turunannya memakai skala y yang sama agar mudah dibandingkan. Jika rentang nilainya berbeda jauh, salah satu kurva mungkin tampak lebih datar.</div>
+    <button class="btn green" id="finishLab">Selesaikan Misi 02 (+100 XP)</button>
+   </div>
+  </section>
 
-        <!-- TAB 2: EKSPLORASI MATERI -->
-        <section id="materi" class="tab-content space-y-6">
-            <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-book-open text-blue-500"></i> Konsep Dasar & Definisi Fungsi Komposisi
-                </h2>
-                
-                <div class="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
-                    <p>
-                        Misalkan terdapat dua buah fungsi <b>f(x)</b> dan <b>g(x)</b>. Jika hasil dari fungsi <b>g</b> dimasukkan kembali ke dalam fungsi <b>f</b>, maka terbentuklah sebuah fungsi baru yang dinamakan <b>fungsi komposisi</b>, dinotasikan dengan lambang lingkaran kecil atau titik bundar (∘).
-                    </p>
+  <section class="view" id="view-graph">
+   <div class="section-card"><div class="eyebrow">MISI 03 · PENJELAJAH GRAFIK</div><h2>Geser titik, baca perubahan!</h2><p class="lead">Eksplorasi fungsi \(f(x)=x^3-3x\). Titik, garis singgung, dan nilai turunannya berubah mengikuti slider.</p>
+    <div class="controls"><div class="field"><label for="graphX">Posisi x: <b id="graphXVal">1.00</b></label><input id="graphX" type="range" min="-2.5" max="2.5" step=".05" value="1"></div></div>
+    <div class="three-col"><div class="mini-card"><small class="muted">POSISI f(x)</small><div class="result-number" id="graphFx">-2.00</div></div><div class="mini-card"><small class="muted">GRADIEN f′(x)</small><div class="result-number" id="graphDfx">0.00</div></div><div class="mini-card"><small class="muted">ANALISIS</small><strong id="graphAnalysis">Titik stasioner</strong><p class="hint" id="graphAnalysis2">Gradien nol</p></div></div>
+    <div id="derivativeGraph" class="graph"></div><p class="hint">Garis singgung ditampilkan pada grafik fungsi. Kurva putus-putus menunjukkan grafik turunan \(f'(x)=3x^2-3\).</p>
+    <div class="callout"><b>Ingat:</b> jika \(f'(x)>0\) pada interval, fungsi naik pada interval itu; jika \(f'(x)<0\), fungsi turun. Ketika \(f'(x)=0\), periksa perubahan tanda turunan untuk mengetahui apakah terjadi maksimum atau minimum lokal.</div>
+    <button class="btn green" id="finishGraph">Selesaikan Misi 03 (+100 XP)</button>
+   </div>
+  </section>
 
-                    <div class="bg-slate-900/80 p-5 rounded-xl border border-blue-500/30 flex flex-col items-center justify-center text-center space-y-2">
-                        <span class="text-xs uppercase tracking-wider text-blue-400 font-semibold">Definisi Matematis</span>
-                        <div class="text-lg md:text-xl font-mono text-white bg-slate-950 px-6 py-3 rounded-lg border border-slate-800 w-full">
-                            (f ∘ g)(x) = f(g(x)) &nbsp;&nbsp;dan&nbsp;&nbsp; (g ∘ f)(x) = g(f(x))
-                        </div>
-                        <p class="text-xs text-slate-400">Artinya: Fungsi g dikerjakan terlebih dahulu, kemudian hasilnya dilanjutkan oleh fungsi f.</p>
-                    </div>
+  <section class="view" id="view-optimize">
+   <div class="section-card"><div class="eyebrow">MISI 04 · PEMBURU TITIK OPTIMAL</div><h2>Temukan titik terbaik</h2><p class="lead">Kita akan menganalisis \(f(x)=-x^2+6x+7\). Gunakan turunan pertama untuk menemukan kandidat titik ekstrem.</p>
+    <div class="two-col"><div class="mini-card"><h3>Langkah 1 · Turunkan</h3><div class="formula">\(f'(x)=-2x+6\)</div><h3>Langkah 2 · Samakan dengan nol</h3><div class="formula">\(-2x+6=0\Rightarrow x=3\)</div><h3>Langkah 3 · Periksa tanda</h3><p>Untuk \(x&lt;3\), \(f'(x)&gt;0\) sehingga fungsi naik. Untuk \(x&gt;3\), \(f'(x)&lt;0\) sehingga fungsi turun.</p></div><div class="mini-card"><h3>Hasil</h3><div class="formula">\(f(3)=-(3)^2+6(3)+7=16\)</div><p>Karena tanda turunan berubah dari positif menjadi negatif, titik \((3,16)\) adalah maksimum lokal. Untuk parabola ini, titik tersebut juga merupakan maksimum mutlak pada domain real.</p><div class="result-number">(3, 16)</div></div></div>
+    <div id="optimizationGraph" class="graph"></div>
+    <h3>Eksperimen koefisien</h3><p class="muted">Ubah a, b, dan c pada fungsi kuadrat \(f(x)=ax^2+bx+c\), dengan \(a\ne0\). Titik puncaknya berada di \(x=-b/(2a)\).</p>
+    <div class="controls"><div class="field"><label for="optA">a</label><input type="number" id="optA" value="-1" step=".5"></div><div class="field"><label for="optB">b</label><input type="number" id="optB" value="6" step="1"></div><div class="field"><label for="optC">c</label><input type="number" id="optC" value="7" step="1"></div><button class="btn" id="updateOpt">Perbarui grafik</button></div><div id="optResult" class="callout"></div><div id="optCustomGraph" class="graph"></div>
+    <button class="btn green" id="finishOptimize">Selesaikan Misi 04 (+100 XP)</button>
+   </div>
+  </section>
 
-                    <h3 class="text-lg font-semibold text-white pt-2">Sifat-Sifat Penting dalam Fungsi Komposisi:</h3>
-                    <ul class="list-disc pl-5 space-y-2 text-slate-300">
-                        <li><b>Tidak Komutatif:</b> Pada umumnya, (f ∘ g)(x) ≠ (g ∘ f)(x). Urutan penulisan sangat menentukan hasil akhir.</li>
-                        <li><b>Bersifat Asosiatif:</b> Berlaku (f ∘ (g ∘ h))(x) = ((f ∘ g) ∘ h)(x).</li>
-                        <li><b>Unsur Identitas:</b> Terdapat fungsi identitas I(x) = x sedemikian rupa sehingga (f ∘ I)(x) = (I ∘ f)(x) = f(x).</li>
-                    </ul>
-                </div>
+  <section class="view" id="view-cases">
+   <div class="section-card"><div class="eyebrow">MISI 05 · MATEMATIKA DI DUNIA NYATA</div><h2>Turunan untuk mengambil keputusan</h2><p class="lead">Pilih studi kasus, pecahkan masalahnya, lalu cocokkan jawabanmu dengan model matematika.</p>
+    <div class="controls"><div class="field"><label for="caseSelect">Pilih studi kasus</label><select id="caseSelect"><option value="profit">01 · Keuntungan usaha siswa</option><option value="ball">02 · Gerak bola</option><option value="garden">03 · Desain taman sekolah</option><option value="box">04 · Kotak kemasan</option></select></div></div>
+    <div id="caseContent"></div><div id="caseGraph" class="graph"></div><div class="controls"><div class="field"><label id="caseAnswerLabel" for="caseAnswer">Jawaban</label><input id="caseAnswer" type="number" step="any" placeholder="Masukkan jawaban numerik"></div><button class="btn" id="checkCase">Periksa jawaban</button><button class="btn secondary" id="showCaseHint">Petunjuk</button><button class="btn secondary" id="showCaseSolution">Lihat pembahasan</button></div><div class="feedback" id="caseFeedback"></div><div class="section-card" id="caseSolution" style="display:none;margin-top:12px"></div><button class="btn green" id="finishCases">Selesaikan Misi 05 (+100 XP)</button>
+   </div>
+  </section>
 
-                <div class="flex justify-between pt-4 border-t border-slate-800">
-                    <button onclick="switchTab('beranda')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-5 py-2.5 rounded-xl transition text-sm">
-                        <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
-                    </button>
-                    <button onclick="switchTab('aplikasi')" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 rounded-xl transition text-sm flex items-center gap-2">
-                        Lanjut ke Contoh & Aplikasi <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
+  <section class="view" id="view-quiz">
+   <div class="section-card"><div class="eyebrow">MISI 06 · BOSS CHALLENGE</div><h2>Siap menghadapi tantangan akhir?</h2><p class="lead">15 soal pilihan ganda dan numerik. Setiap jawaban benar bernilai sama. Kamu boleh berpindah soal, tetapi pastikan semua jawaban sudah diperiksa sebelum menyelesaikan tantangan.</p>
+    <div class="three-col"><div class="mini-card"><small class="muted">SOAL</small><div class="result-number" id="quizCount">15</div></div><div class="mini-card"><small class="muted">SUDAH DIJAWAB</small><div class="result-number" id="quizAnswered">0</div></div><div class="mini-card"><small class="muted">SKOR SEMENTARA</small><div class="result-number" id="quizTempScore">—</div></div></div>
+    <div id="quizArea" style="margin-top:20px"><div class="question-meta"><span class="tag" id="quizNumber">SOAL 1 / 15</span><span class="tag" id="quizDifficulty">MUDAH</span></div><div class="question-text" id="quizQuestion"></div><div class="answer-options" id="quizOptions"></div><div class="controls" id="numericWrap" style="display:none"><div class="field"><label for="numericAnswer">Jawaban numerik</label><input id="numericAnswer" type="number" step="any"></div></div><div class="feedback" id="quizFeedback"></div><div class="quiz-nav"><button class="btn secondary" id="prevQuestion">← Sebelumnya</button><div class="quiz-dots" id="quizDots"></div><button class="btn" id="nextQuestion">Berikutnya →</button></div><div class="controls"><button class="btn green" id="checkQuizAnswer">Periksa jawaban</button><button class="btn purple" id="finishQuiz">Selesaikan tantangan</button></div></div>
+    <div id="quizResult" style="display:none"></div>
+   </div>
+  </section>
 
-        <!-- TAB 3: CONTOH & APLIKASI -->
-        <section id="aplikasi" class="tab-content space-y-6">
-            <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-lightbulb text-amber-400"></i> Contoh Soal Aljabar & Aplikasi Kontekstual
-                </h2>
+  <section class="view" id="view-summary">
+   <div class="section-card"><div class="eyebrow">CATATAN PENJELAJAH</div><h2>Rangkuman Turunan Fungsi Aljabar</h2>
+    <h3>1. Aturan dasar</h3><div class="formula">\((c)'=0\)</div><div class="formula">\((x^n)'=nx^{n-1}\)</div><div class="formula">\((c\,f(x))'=c\,f'(x)\)</div><div class="formula">\((f(x)\pm g(x))'=f'(x)\pm g'(x)\)</div>
+    <h3>2. Makna turunan</h3><p>Turunan \(f'(a)\) merupakan gradien garis singgung grafik pada \(x=a\) dan dapat menggambarkan laju perubahan sesaat.</p>
+    <h3>3. Fungsi naik dan turun</h3><ul><li>Jika \(f'(x)&gt;0\) pada interval, fungsi naik pada interval tersebut.</li><li>Jika \(f'(x)&lt;0\) pada interval, fungsi turun pada interval tersebut.</li><li>Jika \(f'(x)=0\), titik itu kandidat titik stasioner; periksa tanda turunan untuk menganalisis ekstrem.</li></ul>
+    <h3>4. Langkah optimasi</h3><ol><li>Tentukan fungsi tujuan dan domain yang masuk akal.</li><li>Hitung turunan pertama.</li><li>Cari titik kritis dengan \(f'(x)=0\), serta perhatikan titik saat turunan tidak ada.</li><li>Periksa perubahan tanda turunan atau gunakan uji lain yang sesuai.</li><li>Bandingkan kandidat dan batas domain jika mencari ekstrem mutlak.</li><li>Tafsirkan hasil dalam konteks masalah.</li></ol>
+    <h3>5. Refleksi belajar</h3><p class="muted">Jawab dengan jujur untuk membantu merencanakan belajar berikutnya. Refleksi disimpan di browser ini.</p><div class="field"><label for="reflectionEasy">Konsep yang paling mudah dipahami</label><textarea id="reflectionEasy" rows="2" placeholder="Contoh: aturan turunan pangkat..."></textarea></div><div class="field"><label for="reflectionHard">Konsep yang masih membingungkan</label><textarea id="reflectionHard" rows="2" placeholder="Tuliskan bagian yang ingin kamu pelajari lagi..."></textarea></div><div class="field"><label for="reflectionUse">Bagaimana turunan membantu memecahkan masalah nyata?</label><textarea id="reflectionUse" rows="2" placeholder="Tuliskan pemahamanmu..."></textarea></div><div class="field"><label for="reflectionConfidence">Seberapa yakin kamu memahami materi?</label><select id="reflectionConfidence"><option value="">Pilih tingkat keyakinan</option><option>1 — Masih perlu banyak bantuan</option><option>2 — Mulai memahami</option><option>3 — Cukup yakin</option><option>4 — Yakin</option><option>5 — Sangat yakin</option></select></div><div class="controls"><button class="btn" id="saveReflection">Simpan refleksi</button><button class="btn secondary" id="printSummary">Cetak rangkuman / hasil</button><button class="btn secondary" id="exportResults">Ekspor hasil CSV</button></div><div id="reflectionFeedback" class="feedback"></div>
+   </div>
+  </section>
 
-                <div class="space-y-6">
-                    <!-- Contoh 1: Aljabar Biasa -->
-                    <div class="bg-slate-900/70 border border-slate-800 p-5 rounded-xl space-y-3">
-                        <div class="flex items-center gap-2 text-blue-400 font-semibold text-sm">
-                            <i class="fa-solid fa-calculator"></i> Contoh 1: Fungsi Aljabar Murni
-                        </div>
-                        <p class="text-slate-300 text-sm">
-                            Diketahui fungsi <b>f(x) = 2x + 3</b> dan <b>g(x) = x² - 1</b>. Tentukan rumus fungsi komposisi <b>(f ∘ g)(x)</b> dan hitung nilai untuk <b>x = 3</b>!
-                        </p>
-                        
-                        <div class="bg-slate-950 p-4 rounded-lg space-y-2 text-xs md:text-sm font-mono text-slate-200 border border-slate-800/80">
-                            <div class="text-amber-400 font-bold border-b border-slate-800 pb-1">Penyelesaian Langkah 1: Memahami Definisi</div>
-                            <div>(f ∘ g)(x) = f(g(x))</div>
-                            
-                            <div class="text-amber-400 font-bold border-b border-slate-800 pb-1 pt-2">Penyelesaian Langkah 2: Substitusi Fungsi g(x) ke dalam f(x)</div>
-                            <div>f(x² - 1) = 2(x² - 1) + 3</div>
-                            <div>= 2x² - 2 + 3</div>
-                            <div class="text-emerald-400 font-bold">= 2x² + 1 &nbsp;<span class="text-slate-400 font-normal">(Rumus (f ∘ g)(x))</span></div>
+  <section class="view" id="view-teacher">
+   <div class="section-card"><div class="eyebrow">INFORMASI PEMBELAJARAN</div><h2>Catatan Guru</h2><p class="lead">Media pembelajaran interaktif Matematika SMA</p><div class="two-col"><div class="mini-card"><h3>👨‍🏫 Identitas</h3><p><b>Guru Mata Pelajaran:</b> Faisol</p><p><b>Mata Pelajaran:</b> Matematika</p><p><b>Materi:</b> Turunan Fungsi Aljabar dan Penerapannya</p><p><b>Jenjang:</b> SMA</p></div><div class="mini-card"><h3>🎯 Tujuan pembelajaran</h3><ul><li>Menjelaskan makna turunan sebagai gradien dan laju perubahan sesaat.</li><li>Menentukan turunan fungsi aljabar.</li><li>Menganalisis fungsi naik, turun, dan titik stasioner.</li><li>Menyelesaikan masalah maksimum dan minimum.</li><li>Menafsirkan solusi sesuai konteks.</li></ul></div></div>
+    <h3>Saran alur penggunaan</h3><ol><li><b>Pemantik (5–10 menit):</b> diskusikan kecepatan mobil dan perubahan.</li><li><b>Eksplorasi (15–20 menit):</b> siswa mencoba lab turunan dan grafik berpasangan.</li><li><b>Aplikasi (15–20 menit):</b> kelompok menyelesaikan satu studi kasus dan menjelaskan alasan.</li><li><b>Evaluasi (10–15 menit):</b> siswa mengerjakan Boss Challenge.</li><li><b>Refleksi (5 menit):</b> siswa menulis konsep yang dikuasai dan yang perlu diulang.</li></ol>
+    <h3>Rubrik sederhana</h3><div class="table-wrap"><table><thead><tr><th>Aspek</th><th>Indikator</th><th>Bobot saran</th></tr></thead><tbody><tr><td>Konsep</td><td>Menjelaskan makna turunan dengan benar</td><td>20%</td></tr><tr><td>Prosedur</td><td>Menggunakan aturan turunan secara tepat</td><td>30%</td></tr><tr><td>Penalaran</td><td>Menganalisis tanda turunan dan ekstrem</td><td>25%</td></tr><tr><td>Aplikasi</td><td>Menafsirkan hasil pada konteks masalah</td><td>25%</td></tr></tbody></table></div>
+    <div class="callout">Catatan teknis: aplikasi ini berjalan di browser dan menyimpan progres secara lokal melalui localStorage. Data tidak otomatis terkirim ke guru atau Google Sheets. Plotly.js dan MathJax dimuat dari CDN sehingga koneksi internet diperlukan untuk fitur grafik dan format rumus.</div>
+   </div>
+  </section>
+ </main>
+</div>
+<footer class="footer">MISSION: MASTER OF DERIVATIVES · Media Pembelajaran Matematika SMA<br>Guru Mata Pelajaran: <b>Faisol</b> · Belajar dengan rasa ingin tahu ✦</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const state={xp:0,completed:[],bestScore:null,attempts:0,answers:{},checked:{},quizIndex:0,quizFinished:false,coeffs:[1,-3,2,1],reflection:{}};
+const STORAGE_KEY='masterDerivativesFaisol_v1';
+function loadState(){try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');Object.assign(state,saved);if(!Array.isArray(state.completed))state.completed=[];if(!state.answers)state.answers={};if(!state.checked)state.checked={};}catch(e){}}
+function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){}}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),3000)}
+function completeMission(id,xp){if(!state.completed.includes(id)){state.completed.push(id);state.xp+=xp;saveState();renderProgress();toast('Misi selesai! +'+xp+' XP ✨')}else toast('Misi ini sudah tercatat selesai.')}
+function renderProgress(){ $('xpValue').textContent=state.xp+' XP';$('xpBar').style.width=Math.min(100,state.xp/6)+'%';$('missionValue').textContent=state.completed.length+' / 6';$('missionBar').style.width=(state.completed.length/6*100)+'%';$('scoreValue').textContent=state.bestScore===null?'—':state.bestScore+'%';const earned=state.completed.length+ (state.bestScore!==null&&state.bestScore>=70?1:0);$('badgeValue').textContent=earned+' 🏅';for(let i=1;i<=6;i++){const el=$('tag-m'+i);if(el){el.textContent=state.completed.includes('m'+i)?'✓ SELESAI':'BELUM DIMULAI';el.classList.toggle('done',state.completed.includes('m'+i))}}}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===name));if(name==='graph')drawDerivativeGraph();if(name==='concept')drawSecant();if(name==='lab')drawLabGraph();if(name==='optimize'){drawOptimizationGraph();updateCustomOpt(false)}if(name==='cases')renderCase();if(name==='overview')drawOverviewGraph();if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();document.querySelector('.layout').scrollIntoView({behavior:'smooth',block:'start'})}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
+$('startBtn').addEventListener('click',()=>{showView('concept')});
+$('guideBtn').addEventListener('click',()=>{showView('overview');toast('Pilih misi pada peta atau navigasi. Coba simulasi, lalu periksa pemahamanmu.')});
+$('resetProgress').addEventListener('click',()=>{if(confirm('Reset semua progres, skor, jawaban kuis, dan refleksi di browser ini?')){localStorage.removeItem(STORAGE_KEY);location.reload()}});
+function plot(id,data,layout={}){if(!window.Plotly){$(id).innerHTML='<div style="padding:20px;color:#222">Grafik memerlukan koneksi internet untuk memuat Plotly.js.</div>';return}const base={paper_bgcolor:'#f9fbff',plot_bgcolor:'#f9fbff',font:{color:'#1c2740',family:'Inter, sans-serif'},margin:{l:48,r:20,t:20,b:45},xaxis:{title:'x',gridcolor:'#e3e8f2',zerolinecolor:'#9aa8c1'},yaxis:{title:'y',gridcolor:'#e3e8f2',zerolinecolor:'#9aa8c1'},showlegend:true,legend:{orientation:'h',y:-.22}};Plotly.react(id,data,Object.assign(base,layout),{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d','select2d']})}
+function range(a,b,n=180){return Array.from({length:n+1},(_,i)=>a+(b-a)*i/n)}
+function fPoly(cs,x){return cs.reduce((s,c,i)=>s+c*Math.pow(x,cs.length-1-i),0)}
+function dPoly(cs){const n=cs.length-1;return cs.slice(0,-1).map((c,i)=>c*(n-i))}
+function polyString(cs,variable='x'){let out='';const degree=cs.length-1;cs.forEach((c,i)=>{if(Math.abs(c)<1e-10)return;const p=degree-i;const abs=Math.abs(c);let term;if(p===0)term=fmt(abs);else{const coeff=abs===1?'':fmt(abs);term=coeff+variable+(p===1?'':'^'+p)}if(!out)out=(c<0?'-':'')+term;else out+=(c<0?' - ':' + ')+term});return out||'0'}
+function fmt(n){if(Math.abs(n)<1e-9)return '0';if(Math.abs(n-Math.round(n))<1e-8)return String(Math.round(n));return Number(n.toFixed(3)).toString()}
+function derivativeLatex(cs){return '\\(f(x)='+polyString(cs)+'\\), \\quad \\(f\\u0027(x)='+polyString(dPoly(cs))+'\\)'}
+function drawOverviewGraph(){const x=range(-3,3);plot('overviewGraph',[{x,y:x.map(v=>v*v),type:'scatter',mode:'lines',name:'f(x) = x²',line:{color:'#536dfe',width:3}},{x,y:x.map(v=>2*v),type:'scatter',mode:'lines',name:'f′(x) = 2x',line:{color:'#00a7a7',width:3,dash:'dash'}}],{title:{text:'Fungsi dan turunannya',font:{size:14}}})}
+function drawSecant(){if(!$('secantGraph'))return;const a=+$('secA').value,h=+$('secH').value; $('secAVal').textContent=fmt(a);$('secHVal').textContent=h.toFixed(2);const xs=range(-3,3),ya=a*a,yb=(a+h)**2,slope=(yb-ya)/h;const tangent=2*a;plot('secantGraph',[{x:xs,y:xs.map(x=>x*x),type:'scatter',mode:'lines',name:'f(x) = x²',line:{color:'#536dfe',width:3}},{x:[a,a+h],y:[ya,yb],type:'scatter',mode:'markers',name:'Titik secan',marker:{size:9,color:'#ef476f'}},{x:xs,y:xs.map(x=>ya+slope*(x-a)),type:'scatter',mode:'lines',name:'Garis secan',line:{color:'#ef476f',dash:'dash'}},{x:xs,y:xs.map(x=>ya+tangent*(x-a)),type:'scatter',mode:'lines',name:'Garis singgung',line:{color:'#00a7a7',width:2}}],{title:{text:'Garis secan mendekati garis singgung',font:{size:14}},xaxis:{range:[-3,3]}});$('secantInfo').innerHTML=`Gradien secan = <b>${fmt(slope)}</b>; gradien garis singgung di x = ${fmt(a)} adalah f′(a) = 2a = <b>${fmt(tangent)}</b>. Saat h mendekati 0, gradien secan mendekati gradien singgung.`}
+$('secA').addEventListener('input',drawSecant);$('secH').addEventListener('input',drawSecant);
+$('checkConcept').addEventListener('click',()=>{const v=document.querySelector('input[name="conceptQ"]:checked');const f=$('conceptFeedback');f.className='feedback show '+(v&&v.value==='b'?'good':'bad');f.textContent=v&&v.value==='b'?'Tepat! Turunan menggambarkan gradien garis singgung dan laju perubahan sesaat.':'Belum tepat. Pikirkan kemiringan garis yang menyentuh kurva di satu titik.';if(v&&v.value==='b')completeMission('m1',100)});
 
-                            <div class="text-amber-400 font-bold border-b border-slate-800 pb-1 pt-2">Penyelesaian Langkah 3: Menghitung Nilai untuk x = 3</div>
-                            <div>(f ∘ g)(3) = 2(3)² + 1 = 2(9) + 1 = 18 + 1 = 19</div>
-                        </div>
-                    </div>
+const presets={example:[1,-3,2,1],quadratic:[-1,6,7],profit:[-2,80,-300]};
+function updateLab(){const cs=state.coeffs,ds=dPoly(cs);$('polyFormula').innerHTML='\\(f(x)='+polyString(cs)+'\\)';$('derivativeFormula').innerHTML='\\(f\\u0027(x)='+polyString(ds)+'\\)';$('polySteps').innerHTML=cs.map((c,i)=>{const p=cs.length-1-i;return `<div class="callout">${fmt(c)}${p?'x'+(p>1?'<sup>'+p+'</sup>':''):''} → ${p===0?'0':fmt(c*p)+(p-1?'x<sup>'+(p-1)+'</sup>':'')}</div>`}).join('');updateLabX();if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise();drawLabGraph()}
+function updateLabX(){const x=+$('labX').value;$('labXVal').textContent=fmt(x);const y=fPoly(state.coeffs,x),dy=fPoly(dPoly(state.coeffs),x);$('labFx').textContent=fmt(y);$('labDfx').textContent=fmt(dy);$('labMeaning').textContent=dy>1e-6?'Gradien positif · fungsi naik di sekitar titik':dy< -1e-6?'Gradien negatif · fungsi turun di sekitar titik':'Gradien nol · periksa perubahan tanda';}
+function drawLabGraph(){if(!$('labGraph'))return;const x=range(-5,5),cs=state.coeffs,ds=dPoly(cs);plot('labGraph',[{x,y:x.map(v=>fPoly(cs,v)),type:'scatter',mode:'lines',name:'f(x)',line:{color:'#536dfe',width:3}},{x,y:x.map(v=>fPoly(ds,v)),type:'scatter',mode:'lines',name:'f′(x)',line:{color:'#00a7a7',width:3,dash:'dash'}}],{title:{text:'Fungsi awal dan turunan',font:{size:14}}})}
+$('polyInput').addEventListener('change',()=>{$('customPoly').style.display=$('polyInput').value==='custom'?'block':'none'});
+$('loadPoly').addEventListener('click',()=>{const key=$('polyInput').value;if(key==='custom'){$('customPoly').style.display='block';return}state.coeffs=presets[key].slice();updateLab();toast('Fungsi dimuat ke laboratorium.')});
+$('applyCoeff').addEventListener('click',()=>{const raw=$('coeffInput').value.split(',').map(s=>s.trim());const nums=raw.map(Number);if(raw.length<1||raw.length>9||nums.some(v=>!Number.isFinite(v))){toast('Masukkan 1–9 koefisien angka yang valid.');return}while(nums.length>1&&Math.abs(nums[0])<1e-12)nums.shift();state.coeffs=nums;updateLab();toast('Koefisien diterapkan.')});
+$('labX').addEventListener('input',updateLabX);$('finishLab').addEventListener('click',()=>completeMission('m2',100));
 
-                    <!-- Contoh 2: Aplikasi Kontekstual di Masyarakat -->
-                    <div class="bg-slate-900/70 border border-slate-800 p-5 rounded-xl space-y-3">
-                        <div class="flex items-center gap-2 text-emerald-400 font-semibold text-sm">
-                            <i class="fa-solid fa-city"></i> Contoh 2: Aplikasi Kontekstual (Pabrik & Biaya Produksi)
-                        </div>
-                        <p class="text-slate-300 text-sm">
-                            Sebuah pabrik kertas memproduksi kertas dari bahan kayu melalui dua tahap. Tahap pertama menggunakan mesin I yang menghasilkan setengah bahan baku kayu dikurangi 2 ton: <b>f(x) = 0.5x - 2</b>. Tahap kedua menggunakan mesin II yang mencetak kertas berdasarkan bahan setengah jadi x: <b>g(x) = 3x + 5</b>. Jika tersedia 100 ton kayu (<b>x = 100</b>), berapa ton kertas jadi yang dihasilkan?
-                        </p>
-                        
-                        <div class="bg-slate-950 p-4 rounded-lg space-y-2 text-xs md:text-sm font-mono text-slate-200 border border-slate-800/80">
-                            <div class="text-amber-400 font-bold border-b border-slate-800 pb-1">Penyelesaian Langkah 1: Menentukan Fungsi Komposisi (g ∘ f)(x)</div>
-                            <div>Mesin 1 diproses dulu baru Mesin 2 ➔ (g ∘ f)(x) = g(f(x))</div>
-                            <div>g(0.5x - 2) = 3(0.5x - 2) + 5</div>
-                            <div>= 1.5x - 6 + 5 = 1.5x - 1</div>
+function drawDerivativeGraph(){const x=range(-2.5,2.5),a=+$('graphX').value,y=a**3-3*a,dy=3*a*a-3; $('graphXVal').textContent=a.toFixed(2);$('graphFx').textContent=fmt(y);$('graphDfx').textContent=fmt(dy);let text,detail;if(Math.abs(dy)<.0001){text='Gradien nol';detail=Math.abs(a+1)<.08?'Di sekitar x = −1 terjadi maksimum lokal.':Math.abs(a-1)<.08?'Di sekitar x = 1 terjadi minimum lokal.':'Periksa perubahan tanda untuk menentukan jenis titik.'}else if(dy>0){text='Turunan positif';detail='Fungsi naik pada interval sekitar titik ini.'}else{text='Turunan negatif';detail='Fungsi turun pada interval sekitar titik ini.'}$('graphAnalysis').textContent=text;$('graphAnalysis2').textContent=detail;const tangentX=range(a-.9,a+.9,50);plot('derivativeGraph',[{x,y:x.map(v=>v**3-3*v),type:'scatter',mode:'lines',name:'f(x) = x³ − 3x',line:{color:'#536dfe',width:3}},{x:tangentX,y:tangentX.map(v=>y+dy*(v-a)),type:'scatter',mode:'lines',name:'Garis singgung',line:{color:'#ef476f',width:2}},{x:[a],y:[y],type:'scatter',mode:'markers',name:'Titik terpilih',marker:{size:11,color:'#ef476f'}},{x,y:x.map(v=>3*v*v-3),type:'scatter',mode:'lines',name:'f′(x) = 3x² − 3',line:{color:'#00a7a7',width:2,dash:'dash'}}],{title:{text:'f(x), garis singgung, dan f′(x)',font:{size:14}}})}
+$('graphX').addEventListener('input',drawDerivativeGraph);$('finishGraph').addEventListener('click',()=>completeMission('m3',100));
 
-                            <div class="text-amber-400 font-bold border-b border-slate-800 pb-1 pt-2">Penyelesaian Langkah 2: Hitung untuk x = 100 ton</div>
-                            <div>(g ∘ f)(100) = 1.5(100) - 1 = 150 - 1 = 149 ton kertas.</div>
-                        </div>
-                    </div>
-                </div>
+function drawOptimizationGraph(){const x=range(-2,8);plot('optimizationGraph',[{x,y:x.map(v=>-v*v+6*v+7),type:'scatter',mode:'lines',name:'f(x) = −x² + 6x + 7',line:{color:'#536dfe',width:3}},{x:[3],y:[16],type:'scatter',mode:'markers+text',text:['Maksimum (3, 16)'],textposition:'top center',name:'Titik maksimum',marker:{size:12,color:'#ef476f'}}],{title:{text:'Titik maksimum fungsi',font:{size:14}}})}
+function updateCustomOpt(showToast=true){const a=+$('optA').value,b=+$('optB').value,c=+$('optC').value;if(!Number.isFinite(a)||!Number.isFinite(b)||!Number.isFinite(c)||a===0){$('optResult').textContent='Koefisien harus berupa angka dan a tidak boleh nol.';return}const xv=-b/(2*a),yv=a*xv*xv+b*xv+c;const x=range(xv-5,xv+5);plot('optCustomGraph',[{x,y:x.map(v=>a*v*v+b*v+c),type:'scatter',mode:'lines',name:`f(x) = ${fmt(a)}x² + ${fmt(b)}x + ${fmt(c)}`,line:{color:'#536dfe',width:3}},{x:[xv],y:[yv],type:'scatter',mode:'markers+text',text:[`Puncak (${fmt(xv)}, ${fmt(yv)})`],textposition:'top center',name:'Titik puncak',marker:{size:11,color:'#ef476f'}}],{title:{text:'Eksplorasi fungsi kuadrat',font:{size:14}}});$('optResult').innerHTML=`Titik puncak: <b>(${fmt(xv)}, ${fmt(yv)})</b>. Karena a ${a<0?'&lt; 0, parabola terbuka ke bawah sehingga titik puncak adalah maksimum.':'&gt; 0, parabola terbuka ke atas sehingga titik puncak adalah minimum.'} Nilai ekstrem = ${fmt(yv)}.`;if(showToast)toast('Grafik optimasi diperbarui.')}
+$('updateOpt').addEventListener('click',()=>updateCustomOpt(true));$('finishOptimize').addEventListener('click',()=>completeMission('m4',100));
 
-                <div class="flex justify-between pt-4 border-t border-slate-800">
-                    <button onclick="switchTab('materi')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-5 py-2.5 rounded-xl transition text-sm">
-                        <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
-                    </button>
-                    <button onclick="switchTab('simulator')" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 rounded-xl transition text-sm flex items-center gap-2">
-                        Buka Lab Simulator <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
+const cases={
+profit:{title:'Keuntungan usaha siswa',story:'Keuntungan usaha dimodelkan oleh P(x) = −2x² + 80x − 300, dengan x jumlah produk dan P dalam satuan uang yang disederhanakan. Anggap x kontinu untuk analisis model, lalu tafsirkan hasil untuk produksi nyata.',known:'P′(x) = −4x + 80. Titik kritis diperoleh dari −4x + 80 = 0.',ask:'Berapa jumlah produk x yang menghasilkan keuntungan maksimum?',label:'Jumlah produk x',answer:20,unit:'produk',hint:'Turunkan P(x), lalu selesaikan P′(x) = 0. Karena koefisien x² negatif, parabola terbuka ke bawah.',solution:'P′(x)=−4x+80. Dari P′(x)=0 diperoleh x=20. Karena P′ berubah dari positif ke negatif, keuntungan maksimum terjadi pada x=20. P(20)=−2(400)+1600−300=500 satuan uang. Untuk produksi nyata, x berupa bilangan bulat; di sini hasilnya sudah bulat.',func:x=>-2*x*x+80*x-300,der:x=>-4*x+80,range:[0,40],marker:20},
+ball:{title:'Gerak bola yang dilempar ke atas',story:'Ketinggian bola dinyatakan h(t)=−5t²+20t+1, dengan h dalam meter dan t dalam detik. Abaikan hambatan udara dan gunakan model ini selama gerak bola yang relevan.',known:'Kecepatan sesaat adalah turunan posisi: v(t)=h′(t)=−10t+20.',ask:'Pada detik ke berapa bola mencapai ketinggian maksimum?',label:'Waktu t (detik)',answer:2,unit:'detik',hint:'Ketinggian maksimum terjadi ketika kecepatan sesaat nol: v(t)=0.',solution:'h′(t)=−10t+20. Saat h′(t)=0, −10t+20=0 sehingga t=2 detik. Karena h′ positif sebelum t=2 dan negatif sesudahnya, ketinggian maksimum terjadi pada t=2. Tingginya h(2)=−20+40+1=21 meter.',func:x=>-5*x*x+20*x+1,der:x=>-10*x+20,range:[0,4.5],marker:2},
+garden:{title:'Desain taman sekolah',story:'Sekolah memiliki pagar sepanjang 40 meter untuk membuat taman persegi panjang yang menempel pada dinding lurus. Pagar hanya digunakan untuk tiga sisi taman. Misalkan x adalah lebar tegak lurus dinding dan y adalah panjang sisi sejajar dinding yang dipagari.',known:'Kendala pagar: 2x+y=40 sehingga y=40−2x. Luas A(x)=x(40−2x)=40x−2x², dengan 0<x<20.',ask:'Berapa lebar x yang menghasilkan luas taman maksimum?',label:'Lebar x (meter)',answer:10,unit:'meter',hint:'Gunakan A(x)=40x−2x². Turunkan fungsi luas dan cari A′(x)=0.',solution:'A(x)=40x−2x², maka A′(x)=40−4x. A′(x)=0 memberi x=10 meter. Karena A′ positif saat x<10 dan negatif saat x>10, luas maksimum terjadi pada x=10. Panjang sejajar dinding y=40−2(10)=20 meter, sehingga luas maksimum 200 m².',func:x=>40*x-2*x*x,der:x=>40-4*x,range:[0,20],marker:10},
+box:{title:'Kotak kemasan dengan volume maksimum',story:'Dari selembar karton persegi berukuran 30 cm × 30 cm, dipotong persegi kecil sisi x pada setiap sudut lalu sisi karton dilipat membentuk kotak tanpa tutup. Tentukan x yang memaksimalkan volume, dengan 0<x<15.',known:'Volume V(x)=x(30−2x)². Domain fisik: 0<x<15.',ask:'Berapa panjang sisi potongan x (cm) agar volume maksimum?',label:'Sisi potongan x (cm)',answer:5,unit:'cm',hint:'V(x)=x(30−2x)². Setelah diturunkan, V′(x)=(30−2x)(30−6x). Cari titik kritis dalam domain 0<x<15.',solution:'V(x)=x(30−2x)². Turunannya V′(x)=(30−2x)²−4x(30−2x)=(30−2x)(30−6x). Titik kritis x=15 atau x=5. Domain terbuka 0<x<15; x=15 membuat tinggi kotak nol dan bukan volume positif. Pada x=5, V=5×20²=2000 cm³, yang memberi volume maksimum.',func:x=>x*Math.pow(30-2*x,2),der:x=>(30-2*x)*(30-6*x),range:[0,15],marker:5}
+};
+let activeCase='profit';
+function renderCase(){activeCase=$('caseSelect').value;const c=cases[activeCase];$('caseContent').innerHTML=`<div class="mini-card"><h3>${c.title}</h3><p>${c.story}</p><p><b>Diketahui:</b> ${c.known}</p><p><b>Tantangan:</b> ${c.ask}</p></div>`;$('caseAnswerLabel').textContent=c.label;$('caseAnswer').value='';$('caseFeedback').className='feedback';$('caseFeedback').textContent='';$('caseSolution').style.display='none';const x=range(c.range[0],c.range[1]);const xs=c.marker;plot('caseGraph',[{x,y:x.map(v=>c.func(v)),type:'scatter',mode:'lines',name:'Fungsi tujuan',line:{color:'#536dfe',width:3}},{x:[xs],y:[c.func(xs)],type:'scatter',mode:'markers+text',text:['Titik optimal'],textposition:'top center',name:'Titik kandidat',marker:{size:11,color:'#ef476f'}}],{title:{text:c.title,font:{size:14}},xaxis:{title:c.label}})}
+$('caseSelect').addEventListener('change',renderCase);
+$('checkCase').addEventListener('click',()=>{const c=cases[activeCase],v=Number($('caseAnswer').value),ok=$('caseAnswer').value!==''&&Number.isFinite(v)&&Math.abs(v-c.answer)<.03;const f=$('caseFeedback');f.className='feedback show '+(ok?'good':'bad');f.textContent=ok?`Benar! Nilai optimalnya ${fmt(c.answer)} ${c.unit}. Coba jelaskan mengapa hasil ini optimal.`:'Belum tepat. Gunakan turunan pertama dan perhatikan domain masalah. Coba gunakan petunjuk.';if(ok)toast('Jawaban studi kasus benar!')});
+$('showCaseHint').addEventListener('click',()=>{const f=$('caseFeedback');f.className='feedback show';f.textContent='Petunjuk: '+cases[activeCase].hint});
+$('showCaseSolution').addEventListener('click',()=>{const c=cases[activeCase];$('caseSolution').style.display='block';$('caseSolution').innerHTML=`<h3>Pembahasan · ${c.title}</h3><p>${c.solution}</p>`;if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise()});
+$('finishCases').addEventListener('click',()=>completeMission('m5',100));
 
-        <!-- TAB 4: LAB SIMULATOR -->
-        <section id="simulator" class="tab-content space-y-6">
-            <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                            <i class="fa-solid fa-microchip text-blue-500"></i> Lab Simulator Mesin Fungsi Komposisi
-                        </h2>
-                        <p class="text-slate-400 text-xs md:text-sm mt-1">Uji coba langsung perhitungan komposisi dua fungsi dengan masukan variabel pilihan Anda.</p>
-                    </div>
-                </div>
-
-                <!-- Control Panel Simulator -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-900/60 p-5 rounded-xl border border-slate-800">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Pilih Model Fungsi f(x):</label>
-                        <select id="sim-f" onchange="runSimulator()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-blue-500 focus:outline-none">
-                            <option value="f1">f(x) = 2x + 1</option>
-                            <option value="f2">f(x) = 3x - 2</option>
-                            <option value="f3">f(x) = x² + 2</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Pilih Model Fungsi g(x):</label>
-                        <select id="sim-g" onchange="runSimulator()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-blue-500 focus:outline-none">
-                            <option value="g1">g(x) = x + 4</option>
-                            <option value="g2">g(x) = 2x - 3</option>
-                            <option value="g3">g(x) = x²</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nilai Masukan (x):</label>
-                        <input type="number" id="sim-x" value="2" oninput="runSimulator()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-sm text-white focus:border-blue-500 focus:outline-none">
-                    </div>
-                </div>
-
-                <!-- Visual Alur Proses Mesin Komposisi -->
-                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-6">
-                    <h3 class="text-center text-sm font-bold tracking-wider text-slate-300 uppercase">Alur Proses Mesin Komposisi (f ∘ g)(x)</h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800">
-                            <div class="text-xs text-slate-400 mb-1">1. Nilai Masukan (x)</div>
-                            <div id="out-x" class="text-2xl font-bold text-blue-400">2</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800">
-                            <div class="text-xs text-slate-400 mb-1">2. Hasil g(x)</div>
-                            <div id="out-gx" class="text-2xl font-bold text-amber-400">6</div>
-                        </div>
-                        <div class="bg-slate-950/80 p-4 rounded-xl border border-blue-500/40 shadow-lg shadow-blue-500/5">
-                            <div class="text-xs text-blue-300 mb-1">3. Hasil Akhir (f ∘ g)(x)</div>
-                            <div id="out-final" class="text-2xl font-bold text-emerald-400">13</div>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-950 p-3 rounded-lg text-center text-xs font-mono text-slate-300 border border-slate-800">
-                        Formula Komposisi Saat Ini: <span id="out-formula" class="text-blue-400 font-bold">(f ∘ g)(x) = ...</span>
-                    </div>
-
-                    <!-- Kotak Rincian Langkah Penyelesaian Live -->
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs md:text-sm font-mono text-slate-300">
-                        <div class="text-amber-400 font-bold border-b border-slate-800 pb-1">Rincian Tahapan Perhitungan Live:</div>
-                        <div id="step-1-text">Langkah 1: Menghitung g(x) dari nilai x...</div>
-                        <div id="step-2-text">Langkah 2: Memasukkan hasil g(x) ke dalam f(x)...</div>
-                        <div id="step-3-text" class="text-emerald-400 font-bold">Hasil Akhir: ...</div>
-                    </div>
-                </div>
-
-                <div class="flex justify-between pt-4 border-t border-slate-800">
-                    <button onclick="switchTab('aplikasi')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-5 py-2.5 rounded-xl transition text-sm">
-                        <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
-                    </button>
-                    <button onclick="switchTab('kuis')" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 rounded-xl transition text-sm flex items-center gap-2">
-                        Lanjut ke Kuis Evaluasi <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 5: KUIS EVALUASI -->
-        <section id="kuis" class="tab-content space-y-6">
-            <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                            <i class="fa-solid fa-square-check text-emerald-400"></i> Kuis Evaluasi Pemahaman (5 Soal)
-                        </h2>
-                        <p class="text-slate-400 text-xs md:text-sm mt-1">Jawablah pertanyaan berikut dengan teliti untuk menguji tingkat penguasaan materi Anda.</p>
-                    </div>
-                    <div id="score-badge" class="hidden bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-2 rounded-xl text-sm font-bold">
-                        Skor Anda: <span id="final-score-val">0</span> / 100
-                    </div>
-                </div>
-
-                <form id="quizForm" onsubmit="submitQuiz(event)" class="space-y-6">
-                    <!-- Soal 1 -->
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
-                        <p class="text-sm md:text-base font-medium text-white">1. Diketahui f(x) = 3x - 1 dan g(x) = 2x + 4. Tentukan nilai dari (f ∘ g)(2)!</p>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="A"> A. 15</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="B"> B. 20</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="C"> C. 23</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="D"> D. 25</label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 2 -->
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
-                        <p class="text-sm md:text-base font-medium text-white">2. Jika f(x) = x² + 2 dan g(x) = x - 1, maka rumus fungsi komposisi (f ∘ g)(x) adalah...</p>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="A"> A. x² - 2x + 3</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="B"> B. x² + x - 1</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="C"> C. x² + 1</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="D"> D. 2x² - 3</label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 3 -->
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
-                        <p class="text-sm md:text-base font-medium text-white">3. Diketahui (f ∘ g)(x) = 4x² + 8x - 3 dan f(x) = 4x + 1. Nilai rumus fungsi g(x) yang memenuhi adalah...</p>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="A"> A. x² + 2x - 1</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="B"> B. x + 4</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="C"> C. 2x - 1</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="D"> D. 4x + 2</label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 4 -->
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
-                        <p class="text-sm md:text-base font-medium text-white">4. Dalam aplikasi kontekstual pabrik, fungsi biaya produksi B(x) dan penjualan P(y) menggunakan prinsip komposisi untuk...</p>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" value="A"> A. Menghitung jumlah bahan baku terhadap total mesin pabrik</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" value="B"> B. Mengaitkan unit produksi bahan baku secara bertahap hingga menjadi produk akhir</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" value="C"> C. Menghitung keliling bangunan pabrik</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" value="D"> D. Menentukan suku bunga bank harian</label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 5 -->
-                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
-                        <p class="text-sm md:text-base font-medium text-white">5. Manakah pernyataan yang paling tepat mengenai sifat fungsi komposisi?</p>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" value="A"> A. Bersifat komutatif ((f ∘ g) = (g ∘ f))</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" value="B"> B. Bersifat asosiatif ((f ∘ (g ∘ h)) = ((f ∘ g) ∘ h))</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" value="C"> C. Selalu menghasilkan garis lurus</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" value="D"> D. Tidak memerlukan variabel x</label>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between pt-4">
-                        <button type="button" onclick="switchTab('simulator')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-5 py-2.5 rounded-xl transition text-sm">
-                            <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
-                        </button>
-                        <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-6 py-2.5 rounded-xl transition text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/20">
-                            <i class="fa-solid fa-check"></i> Selesaikan Kuis & Cek Skor
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- TAB 6: LEMBAR REFLEKSI & REKAP -->
-        <section id="refleksi" class="tab-content space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Lembar Refleksi -->
-                <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
-                    <h2 class="text-xl font-bold text-white flex items-center gap-3">
-                        <i class="fa-solid fa-heart text-rose-500"></i> Lembar Refleksi Pembelajaran
-                    </h2>
-                    <p class="text-slate-400 text-xs md:text-sm">Bagaimana pengalaman belajar Anda hari ini? Sampaikan kesan, tingkat pemahaman, dan kendala Anda.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">NAMA LENGKAP & KELAS:</label>
-                            <input type="text" id="inputNama" placeholder="Contoh: Budi Santoso - X 10.H" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:border-blue-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">SEBERAPA PAHAM ANDA DENGAN MATERI FUNGSI KOMPOSISI?</label>
-                            <select id="selectPemahaman" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:border-blue-500 focus:outline-none">
-                                <option value="Sangat Paham & Menguasai">Sangat Paham & Menguasai</option>
-                                <option value="Cukup Paham, Perlu Latihan Lagi">Cukup Paham, Perlu Latihan Lagi</option>
-                                <option value="Masih Mengalami Kendala / Bingung">Masih Mengalami Kendala / Bingung</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">PESAN, KESAN, ATAU BAGIAN YANG PALING MENARIK:</label>
-                            <textarea id="inputRefleksi" rows="4" placeholder="Tuliskan refleksi Anda di sini..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm text-white focus:border-blue-500 focus:outline-none"></textarea>
-                        </div>
-                        <button id="btnSimpan" onclick="simpanRefleksiKeGoogleSheets()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-xl transition text-sm shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> Simpan & Kirim ke Rekap Guru
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Rekapitulasi Nilai & Cetak -->
-                <div class="card-custom p-6 md:p-8 rounded-2xl shadow-xl space-y-6 flex flex-col justify-between">
-                    <div class="space-y-6">
-                        <h2 class="text-xl font-bold text-white flex items-center gap-3">
-                            <i class="fa-solid fa-database text-blue-400"></i> Rekapitulasi Nilai & Status
-                        </h2>
-                        <p class="text-slate-400 text-xs md:text-sm">Ringkasan status pengerjaan modul dan evaluasi Anda selama sesi pembelajaran interaktif ini.</p>
-                        
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-3 text-sm">
-                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                <span class="text-slate-400">Status Kuis Evaluasi</span>
-                                <span id="rekap-status-kuis" class="text-amber-400 font-semibold text-xs bg-amber-500/10 px-2 py-1 rounded-md border border-amber-500/30">Belum Dikerjakan</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                <span class="text-slate-400">Skor Kuis Akhir</span>
-                                <span id="rekap-skor" class="font-bold text-white">- / 100</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                <span class="text-slate-400">Lab Simulator Teruji</span>
-                                <span class="text-emerald-400 font-semibold">Aktif & Normal</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-slate-400">Alokasi Waktu Belajar</span>
-                                <span class="text-blue-400 font-semibold">90 Menit (Sesi Aktif)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4">
-                        <button onclick="printLaporanPembelajaran()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl transition text-sm border border-slate-700 flex items-center justify-center gap-2 shadow-sm">
-                            <i class="fa-solid fa-print"></i> Cetak / Ekspor Laporan Pembelajaran (F4)
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="w-full bg-[#0f172a] border-t border-slate-800 py-4 mt-12 text-center text-xs text-slate-500">
-        <p>Media Pembelajaran Interaktif Matematika & Teknologi • Didesain khusus untuk Pembelajaran Efektif Berbasis Web</p>
-    </footer>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // Global State Skor Kuis
-        let globalSkorKuis = 0;
-        let kuisSudahDikerjakan = false;
-
-        // Tab Switching Logic
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-600/20');
-                el.classList.add('text-slate-400', 'hover:bg-slate-800/80', 'hover:text-white');
-            });
-            
-            document.getElementById(tabId).classList.add('active');
-            const activeBtn = document.getElementById('btn-' + tabId);
-            if(activeBtn) {
-                activeBtn.classList.remove('text-slate-400', 'hover:bg-slate-800/80', 'hover:text-white');
-                activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-600/20');
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Lab Simulator Live Logic
-        function runSimulator() {
-            const fType = document.getElementById('sim-f').value;
-            const gType = document.getElementById('sim-g').value;
-            let x = parseFloat(document.getElementById('sim-x').value) || 0;
-
-            let gx = 0;
-            let gText = "";
-            if(gType === 'g1') { gx = x + 4; gText = `x + 4`; }
-            else if(gType === 'g2') { gx = (2 * x) - 3; gText = `2x - 3`; }
-            else if(gType === 'g3') { gx = x * x; gText = `x²`; }
-
-            let finalVal = 0;
-            let fText = "";
-            let formulaText = "";
-            if(fType === 'f1') { 
-                finalVal = (2 * gx) + 1; 
-                fText = `2(g(x)) + 1`;
-                if(gType==='g1') formulaText = `(f ∘ g)(x) = 2(x + 4) + 1 = 2x + 9`;
-                else if(gType==='g2') formulaText = `(f ∘ g)(x) = 2(2x - 3) + 1 = 4x - 5`;
-                else formulaText = `(f ∘ g)(x) = 2(x²) + 1 = 2x² + 1`;
-            } else if(fType === 'f2') { 
-                finalVal = (3 * gx) - 2; 
-                fText = `3(g(x)) - 2`;
-                if(gType==='g1') formulaText = `(f ∘ g)(x) = 3(x + 4) - 2 = 3x + 10`;
-                else if(gType==='g2') formulaText = `(f ∘ g)(x) = 3(2x - 3) - 2 = 6x - 11`;
-                else formulaText = `(f ∘ g)(x) = 3(x²) - 2 = 3x² - 2`;
-            } else if(fType === 'f3') { 
-                finalVal = (gx * gx) + 2; 
-                fText = `(g(x))² + 2`;
-                if(gType==='g1') formulaText = `(f ∘ g)(x) = (x + 4)² + 2`;
-                else if(gType==='g2') formulaText = `(f ∘ g)(x) = (2x - 3)² + 2`;
-                else formulaText = `(f ∘ g)(x) = (x²)² + 2 = x⁴ + 2`;
-            }
-
-            // Update UI
-            document.getElementById('out-x').innerText = x;
-            document.getElementById('out-gx').innerText = gx;
-            document.getElementById('out-final').innerText = finalVal;
-            document.getElementById('out-formula').innerText = formulaText;
-
-            // Update Step-by-step text
-            document.getElementById('step-1-text').innerText = `Langkah 1: Menghitung g(${x}) menggunakan rumus g(x) = ${gText} diperoleh hasil ${gx}.`;
-            document.getElementById('step-2-text').innerText = `Langkah 2: Memasukkan nilai g(x) = ${gx} ke dalam fungsi f(x) dengan pola ${fText}.`;
-            document.getElementById('step-3-text').innerText = `Hasil Akhir (f ∘ g)(${x}) = ${finalVal}`;
-        }
-
-        // Quiz Submission Logic
-        function submitQuiz(e) {
-            e.preventDefault();
-            const answers = { q1: 'C', q2: 'A', q3: 'A', q4: 'B', q5: 'B' };
-            let score = 0;
-
-            for (let key in answers) {
-                const selected = document.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === answers[key]) {
-                    score += 20;
-                }
-            }
-
-            globalSkorKuis = score;
-            kuisSudahDikerjakan = true;
-
-            // Show Score Badge
-            document.getElementById('score-badge').classList.remove('hidden');
-            document.getElementById('final-score-val').innerText = score;
-
-            // Update Rekap status
-            document.getElementById('rekap-status-kuis').innerText = "Selesai Dikerjakan";
-            document.getElementById('rekap-status-kuis').className = "text-emerald-400 font-semibold text-xs bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/30";
-            document.getElementById('rekap-skor').innerText = score + " / 100";
-
-            alert(`Kuis selesai! Skor Anda adalah ${score} dari 100.`);
-            switchTab('refleksi');
-        }
-
-        // SIMPAN & KIRIM KE GOOGLE SHEETS (GOOGLE APPS SCRIPT)
-        async function simpanRefleksiKeGoogleSheets() {
-            // URL Web App Google Apps Script milik Anda
-            const urlWebAppData = "https://script.google.com/macros/s/AKfycbxUYzrfyycYpbKxGlFjvA4kIHCJ8pJX8DKfGKYU9DYeCxMj6tLbNo0q8BEK7yu_scuC/exec";
-
-            const nama = document.getElementById('inputNama').value.trim();
-            const pemahaman = document.getElementById('selectPemahaman').value;
-            const refleksi = document.getElementById('inputRefleksi').value.trim();
-
-            if (!nama) {
-                alert("Mohon isi Nama Lengkap & Kelas Anda terlebih dahulu!");
-                document.getElementById('inputNama').focus();
-                return;
-            }
-
-            const dataSiswa = {
-                waktu: new Date().toLocaleString('id-ID'),
-                nama: nama,
-                pemahaman: pemahaman,
-                skorKuis: kuisSudahDikerjakan ? globalSkorKuis : "Belum Kuis",
-                statusLab: "Aktif",
-                refleksi: refleksi !== "" ? refleksi : "Tanpa catatan refleksi"
-            };
-
-            const btn = document.getElementById('btnSimpan');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengirim ke Rekap Guru...`;
-            btn.disabled = true;
-
-            try {
-                await fetch(urlWebAppData, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(dataSiswa)
-                });
-
-                alert("Berhasil! Data refleksi dan nilai kuis telah terkirim otomatis ke Google Sheets Rekap Guru.");
-            } catch (error) {
-                console.error("Gagal mengirim:", error);
-                alert("Terjadi kendala jaringan saat mengirim ke Google Sheets, data tetap tersimpan di perangkat lokal.");
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }
-
-        // Cetak Laporan Format F4
-        function printLaporanPembelajaran() {
-            const nama = document.getElementById('inputNama').value || "Siswa Belum Mengisi Nama";
-            const pemahaman = document.getElementById('selectPemahaman').value;
-            const refleksi = document.getElementById('inputRefleksi').value || "-";
-            const skor = kuisSudahDikerjakan ? globalSkorKuis + " / 100" : "Belum Dikerjakan";
-
-            const printWindow = window.open('', '_blank', 'width=800,height=900');
-            printWindow.document.write(`
-                <html>
-                <head>
-                    <title>Laporan Aktivitas Pembelajaran - Fungsi Komposisi</title>
-                    <style>
-                        @page { size: 215mm 330mm; margin: 20mm; } /* Ukuran F4 */
-                        body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; color: #000; line-height: 1.5; padding: 20px; }
-                        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
-                        .header h2 { margin: 0; font-size: 16pt; text-transform: uppercase; }
-                        .header p { margin: 5px 0 0 0; font-size: 11pt; }
-                        .section { margin-bottom: 15px; }
-                        .section-title { font-weight: bold; font-size: 13pt; margin-bottom: 5px; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
-                        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-                        table, th, td { border: 1px solid #000; padding: 8px; text-align: left; }
-                        th { background-color: #f2f2f2; }
-                        .footer { margin-top: 40px; display: flex; justify-content: space-between; }
-                        .sign { text-align: center; width: 200px; }
-                    </style>
-                </head>
-                <body>
-                    <div class="header">
-                        <h2>Laporan Aktivitas Belajar Siswa</h2>
-                        <p>Mata Pelajaran Matematika - Materi Fungsi Komposisi & Aplikasinya</p>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">A. Identitas Siswa</div>
-                        <table>
-                            <tr><th style="width: 35%;">Nama Lengkap & Kelas</th><td>${nama}</td></tr>
-                            <tr><th>Waktu Cetak Laporan</th><td>${new Date().toLocaleString('id-ID')}</td></tr>
-                            <tr><th>Status Lab Simulator</th><td>Aktif & Selesai Diuji</td></tr>
-                        </table>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">B. Rekapitulasi Evaluasi & Pemahaman</div>
-                        <table>
-                            <tr><th style="width: 35%;">Tingkat Pemahaman Mandiri</th><td>${pemahaman}</td></tr>
-                            <tr><th>Skor Kuis Evaluasi (5 Soal)</th><td><b>${skor}</b></td></tr>
-                        </table>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">C. Catatan Refleksi Pembelajaran</div>
-                        <div style="border: 1px solid #000; padding: 10px; min-height: 80px; background: #fafafa;">
-                            ${refleksi}
-                        </div>
-                    </div>
-
-                    <div class="footer">
-                        <div></div>
-                        <div class="sign">
-                            <p>Mengetahui,<br>Guru Mata Pelajaran / Wali Kelas</p>
-                            <br><br><br>
-                            <p><b>( ......................................... )</b></p>
-                        </div>
-                    </div>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-            printWindow.focus();
-            setTimeout(() => { printWindow.print(); }, 500);
-        }
-
-        // Jalankan simulator awal saat halaman dimuat
-        window.onload = function() {
-            runSimulator();
-        };
-    </script>
+const quiz=[
+{d:'Mudah',q:'Jika f(x)=x⁵, maka f′(x)=…',opts:['5x⁴','x⁴','5x⁶','x⁵'],a:0,ex:'Gunakan aturan pangkat: (xⁿ)′=nxⁿ⁻¹.'},
+{d:'Mudah',q:'Turunan dari f(x)=7x³−4x+9 adalah…',opts:['21x²−4','7x²−4','21x³−4','21x²+9'],a:0,ex:'Turunkan setiap suku: 7x³ menjadi 21x², −4x menjadi −4, dan konstanta 9 menjadi 0.'},
+{d:'Mudah',q:'Jika f(x)=12, maka f′(x)=…',opts:['12','1','0','x'],a:2,ex:'Turunan fungsi konstanta adalah nol.'},
+{d:'Mudah',q:'Turunan f(x)=√x untuk x>0 adalah…',opts:['1/(2√x)','2√x','√x/2','1/√x'],a:0,ex:'Tulis √x=x^(1/2). Turunannya (1/2)x^(−1/2)=1/(2√x).'},
+{d:'Sedang',q:'Jika f(x)=x³−3x, nilai f′(2) adalah…',opts:['3','6','9','12'],a:2,ex:'f′(x)=3x²−3, sehingga f′(2)=12−3=9.'},
+{d:'Sedang',q:'Fungsi f(x)=x²−4x naik pada interval…',opts:['x<2','x>2','semua x','tidak pernah naik'],a:1,ex:'f′(x)=2x−4. Turunan positif jika x>2.'},
+{d:'Sedang',q:'Titik stasioner fungsi f(x)=−x²+8x−3 memiliki absis…',opts:['−4','2','4','8'],a:2,ex:'f′(x)=−2x+8=0, sehingga x=4.'},
+{d:'Sedang',q:'Untuk f(x)=x³−3x, titik x=−1 merupakan…',opts:['minimum lokal','maksimum lokal','bukan titik stasioner','titik belok dengan turunan tidak ada'],a:1,ex:'f′(x)=3x²−3 bernilai nol di ±1. Di sekitar x=−1, turunan berubah dari positif menjadi negatif, jadi maksimum lokal.'},
+{d:'Sedang',q:'Jika P(x)=−2x²+80x−300, jumlah produk yang memaksimalkan P adalah…',numeric:true,a:20,ex:'P′(x)=−4x+80=0 menghasilkan x=20. Koefisien kuadrat negatif, jadi ini maksimum.'},
+{d:'Sedang',q:'Ketinggian bola h(t)=−5t²+20t+1. Kecepatan pada t=1 detik adalah…',opts:['−10 m/s','0 m/s','10 m/s','20 m/s'],a:2,ex:'h′(t)=−10t+20, maka h′(1)=10 m/s.'},
+{d:'Sulit',q:'Fungsi f(x)=x³−6x²+9x memiliki titik stasioner pada…',opts:['x=1 dan x=3','x=−1 dan x=−3','x=0 dan x=3','x=2 dan x=4'],a:0,ex:'f′(x)=3x²−12x+9=3(x−1)(x−3), sehingga x=1 dan x=3.'},
+{d:'Sulit',q:'Luas taman A(x)=40x−2x². Lebar yang memaksimalkan luas adalah…',numeric:true,a:10,ex:'A′(x)=40−4x=0, jadi x=10 meter.'},
+{d:'Sulit',q:'Jika f′(x)=(x−2)², pernyataan yang benar di sekitar x=2 adalah…',opts:['Turunan berubah dari negatif ke positif','Turunan berubah dari positif ke negatif','Turunan tidak berubah tanda; titik bukan ekstrem lokal berdasarkan uji tanda pertama','Fungsi tidak terdefinisi'],a:2,ex:'(x−2)² positif pada kedua sisi x=2 dan nol tepat di x=2. Tidak ada perubahan tanda, jadi uji turunan pertama tidak menunjukkan ekstrem.'},
+{d:'Sulit',q:'Volume kotak V(x)=x(30−2x)². Kandidat x dalam domain 0<x<15 yang memberi maksimum adalah…',opts:['x=2','x=5','x=10','x=15'],a:1,ex:'V′(x)=(30−2x)(30−6x). Titik kritisnya 5 dan 15; x=15 membuat volume nol dan berada di batas domain, sehingga maksimum positif terjadi di x=5.'},
+{d:'Sulit',q:'Untuk f(x)=2x³−3x²+4, nilai f′(−1) adalah…',numeric:true,a:12,ex:'f′(x)=6x²−6x, maka f′(−1)=6+6=12.'}
+];
+function renderQuiz(){const q=quiz[state.quizIndex];$('quizNumber').textContent=`SOAL ${state.quizIndex+1} / ${quiz.length}`;$('quizDifficulty').textContent=q.d.toUpperCase();$('quizQuestion').textContent=q.q;$('quizOptions').innerHTML='';$('numericWrap').style.display=q.numeric?'flex':'none';if(q.numeric){$('numericAnswer').value=state.answers[state.quizIndex]??''}else{q.opts.forEach((opt,i)=>{const lab=document.createElement('label');lab.className='option';const input=document.createElement('input');input.type='radio';input.name='quizOpt';input.value=i;input.checked=String(state.answers[state.quizIndex])===String(i);const span=document.createElement('span');span.textContent=String.fromCharCode(65+i)+'. '+opt;lab.append(input,span);$('quizOptions').append(lab)})}const checked=state.checked[state.quizIndex];const f=$('quizFeedback');f.className='feedback';f.textContent='';if(checked){f.className='feedback show '+(checked.correct?'good':'bad');f.textContent=(checked.correct?'Benar! ':'Belum tepat. ')+q.ex}$('quizDots').innerHTML=quiz.map((_,i)=>`<button class="quiz-dot ${i===state.quizIndex?'current':''} ${state.checked[i]?'answered':''}" data-q="${i}" aria-label="Soal ${i+1}">${i+1}</button>`).join('');$('quizDots').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{saveQuizCurrent();state.quizIndex=+b.dataset.q;renderQuiz()}));$('quizAnswered').textContent=Object.keys(state.checked).length;$('quizTempScore').textContent=Object.keys(state.checked).length?Math.round(Object.values(state.checked).filter(x=>x.correct).length/quiz.length*100)+'%':'—';$('prevQuestion').disabled=state.quizIndex===0;$('nextQuestion').disabled=state.quizIndex===quiz.length-1}
+function saveQuizCurrent(){const q=quiz[state.quizIndex];if(q.numeric){const v=$('numericAnswer').value;if(v!=='')state.answers[state.quizIndex]=Number(v)}else{const r=document.querySelector('input[name="quizOpt"]:checked');if(r)state.answers[state.quizIndex]=Number(r.value)}saveState()}
+$('prevQuestion').addEventListener('click',()=>{saveQuizCurrent();state.quizIndex=Math.max(0,state.quizIndex-1);renderQuiz()});
+$('nextQuestion').addEventListener('click',()=>{saveQuizCurrent();state.quizIndex=Math.min(quiz.length-1,state.quizIndex+1);renderQuiz()});
+$('checkQuizAnswer').addEventListener('click',()=>{saveQuizCurrent();const q=quiz[state.quizIndex],v=state.answers[state.quizIndex];if(v===undefined||v===''){toast('Pilih atau masukkan jawaban terlebih dahulu.');return}const correct=q.numeric?Math.abs(Number(v)-q.a)<.001:Number(v)===q.a;state.checked[state.quizIndex]={correct,answer:v};saveState();renderQuiz();toast(correct?'Jawaban benar!':'Belum tepat, baca pembahasannya ya.')});
+$('finishQuiz').addEventListener('click',()=>{saveQuizCurrent();const checkedCount=Object.keys(state.checked).length;if(checkedCount<quiz.length){if(!confirm(`Baru ${checkedCount} dari ${quiz.length} soal diperiksa. Selesaikan sekarang? Soal yang belum diperiksa dihitung salah.`))return}const correct=Object.values(state.checked).filter(v=>v.correct).length;const score=Math.round(correct/quiz.length*100);state.attempts++;if(state.bestScore===null||score>state.bestScore)state.bestScore=score;state.quizFinished=true;if(!state.completed.includes('m6')){state.completed.push('m6');state.xp+=correct*10+50}else state.xp+=correct*2;saveState();renderProgress();$('quizArea').style.display='none';$('quizResult').style.display='block';$('quizResult').innerHTML=`<div class="section-card"><div class="eyebrow">HASIL BOSS CHALLENGE</div><h2>${score>=90?'🏆 MASTER TURUNAN':score>=80?'🌟 AHLI ANALISIS':score>=70?'🚀 PENJELAJAH HEBAT':'💪 TERUS BERLATIH'}</h2><div class="result-number">${score}%</div><p>Kamu menjawab benar <b>${correct} dari ${quiz.length}</b> soal.</p><div class="progress-track"><div class="progress-fill" style="width:${score}%"></div></div><p>${score>=70?'Bagus! Tinjau kembali pembahasan untuk memperkuat pemahaman.':'Jangan menyerah. Pelajari kembali materi dan coba tantangan lagi.'}</p><h3>Rekomendasi belajar</h3><ul>${score<70?'<li>Ulangi aturan turunan pangkat dan turunan polinomial.</li><li>Latih analisis tanda turunan pada interval.</li>':score<90?'<li>Perkuat soal kontekstual dan optimasi.</li><li>Latih menjelaskan alasan titik ekstrem.</li>':'<li>Coba buat masalah optimasi sendiri dan jelaskan modelnya.</li><li>Bantu teman memahami hubungan grafik dan turunan.</li>'}</ul><button class="btn" id="retryQuiz">Coba tantangan lagi</button><button class="btn secondary" id="reviewQuiz">Tinjau pembahasan</button></div>`;$('retryQuiz').addEventListener('click',()=>{state.answers={};state.checked={};state.quizIndex=0;state.quizFinished=false;saveState();$('quizArea').style.display='block';$('quizResult').style.display='none';renderQuiz()});$('reviewQuiz').addEventListener('click',()=>{const html=quiz.map((q,i)=>`<div class="mini-card"><b>${i+1}. ${q.q}</b><p>${q.ex}</p><span class="tag ${state.checked[i]?.correct?'done':''}">${state.checked[i]?.correct?'BENAR':'PERLU DIULANG'}</span></div>`).join('');$('quizResult').insertAdjacentHTML('beforeend',`<div class="section-card"><h3>Pembahasan semua soal</h3><div class="two-col">${html}</div></div>`)});renderQuiz();toast('Tantangan selesai! Skor '+score+'%.')});
+$('saveReflection').addEventListener('click',()=>{state.reflection={easy:$('reflectionEasy').value,hard:$('reflectionHard').value,use:$('reflectionUse').value,confidence:$('reflectionConfidence').value};saveState();const f=$('reflectionFeedback');f.className='feedback show good';f.textContent='Refleksi tersimpan di browser perangkat ini.'});
+$('printSummary').addEventListener('click',()=>window.print());
+$('exportResults').addEventListener('click',()=>{const rows=[['Jenis','Data'],['Guru','Faisol'],['Materi','Turunan Fungsi Aljabar dan Penerapannya'],['XP',state.xp],['Misi selesai',state.completed.join('; ')],['Skor terbaik',state.bestScore??'Belum ada'],['Jumlah percobaan',state.attempts],['Soal benar terakhir',Object.values(state.checked).filter(x=>x.correct).length],['Refleksi mudah',state.reflection.easy||''],['Refleksi sulit',state.reflection.hard||''],['Refleksi aplikasi',state.reflection.use||''],['Keyakinan',state.reflection.confidence||'']];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='hasil-belajar-turunan-faisol.csv';a.click();URL.revokeObjectURL(url)});
+function restoreReflection(){const r=state.reflection||{};$('reflectionEasy').value=r.easy||'';$('reflectionHard').value=r.hard||'';$('reflectionUse').value=r.use||'';$('reflectionConfidence').value=r.confidence||''}
+function init(){loadState();renderProgress();restoreReflection();updateLab();drawOverviewGraph();drawSecant();drawDerivativeGraph();drawOptimizationGraph();updateCustomOpt(false);renderCase();renderQuiz();if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise()}
+window.addEventListener('load',init);
+</script>
+<style>
+@media print{body{background:white;color:#111}.topbar,.hero,.stats,.mission-grid,.sidebar,.top-actions,.btn,.footer,.toast{display:none!important}.app{max-width:none;padding:0}.layout{display:block;margin:0}.view{display:none!important}#view-summary,#view-teacher{display:block!important}.section-card,.mini-card{background:white;color:#111;box-shadow:none;border:1px solid #ddd;break-inside:avoid}.muted,.lead,.hint{color:#333}.formula{background:#f5f5f5;border-color:#ddd;color:#111}.field textarea,.field input,.field select{color:#111;border:1px solid #aaa}.graph{display:none}a{color:#111}}
+</style>
 </body>
 </html>
